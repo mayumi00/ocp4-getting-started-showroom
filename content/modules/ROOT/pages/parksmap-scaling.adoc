@@ -22,7 +22,7 @@ Kubernetes では、*Deployment* はデプロイ方法を定義します。ほ�
 [#exploring_deployment_related_objects]
 == 演習: デプロイメント関連オブジェクトの探索
 
-*ReplicaSet* と *Deployment*の背景を理解したので、これらがどのように連携するかを確認しましょう。 OpenShift に `parksmap` イメージをデプロイするように指示したときに作成された *Deployment* を確認します。
+*ReplicaSet* と *Deployment* の背景を理解したので、これらがどのように連携するかを確認しましょう。 OpenShift に `parksmap` イメージをデプロイするように指示したときに作成された *Deployment* を確認します。
 
 [source,role="copypaste"]
 ----
