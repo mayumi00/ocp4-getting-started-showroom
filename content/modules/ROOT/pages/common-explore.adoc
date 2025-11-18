@@ -68,7 +68,7 @@ NOTE: 「証明書は不明な認証局によって署名されています」�
 
 [.bordershadow]
 
-ヒント: 認証にはトークンを使用することもできます。トークンを取得するには、OpenShift Web コンソールで [**ログインコマンドをコピー**] オプションを使用します (図を参照)。
+TIP: 認証にはトークンを使用することもできます。トークンを取得するには、OpenShift Web コンソールで **Copy login command** オプションを使用します (図を参照)。
 
 [.bordershadow]
 image::openshift-console-login-command.png[link="self",window=_blank]
