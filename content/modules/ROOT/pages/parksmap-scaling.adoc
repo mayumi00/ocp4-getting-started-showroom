@@ -4,13 +4,13 @@
 include::vars.adoc[]
 
 [#deployments_and_replication_controllers]
-== 背景：DeploymentReplicaSets
+== 背景：DeploymentとReplicaSets
 
 *Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS) と *ReplicationControllers* (RC) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
 
 リンク: {ocp4_starter_openshift_docs}/html/building_applications/deployments[deployments documentation,window='_blank'] より:
 
-[引用]
+[quota]
 __
 レプリケーションコントローラーと同様に、ReplicaSet はネイティブ Kubernetes API オブジェクトであり、指定された数の Pod レプリカが常に実行されていることを保証します。レプリカセットとレプリケーションコントローラーの違いは、レプリカセットがセットベースのセレクター要件をサポートするのに対し、レプリケーションコントローラーは等価性ベースのセレクター要件のみをサポートすることです。
 __
@@ -32,8 +32,8 @@ oc get deployment
 [.console-output]
 [source]
 ----
-NAME READY UP-TO-DATE AVAILABLE AGE
-parksmap 1/1 1 1 20m
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+parksmap   1/1     1            1           20m
 ----
 
 詳細を確認するには、*ReplicaSet* (RS) を確認します。
@@ -46,8 +46,9 @@ oc get rs
 [.console-output]
 [source]
 ----
-NAME DESIRED CURRENT READY AGE
-parksmap-65c4f8b676 1 1 1 21m
+NAME                  DESIRED   CURRENT
+ READY   AGE
+parksmap-65c4f8b676   1         1         1       21m
 ----
 
 この出力は、現在 1 つの *Pod* がデプロイされる予定であることを示しています。 （`Desired`）に設定されており、実際にデプロイされている *Pod* は 1 つ（`Current`）です。この必要数を変更することで、OpenShift に必要となる *Pod* の数を増減させることができます。
@@ -84,8 +85,8 @@ oc get rs
 [.console-output]
 [source]
 ----
-NAME DESIRED CURRENT READY AGE
-parksmap-65c4f8b676 2 2 2 23m
+NAME                  DESIRED   CURRENT   READY   AGE
+parksmap-65c4f8b676   2         2         2       23m
 ----
 
 レプリカが2つになったことがわかります。 `oc get pods` コマンドでポッドの数を確認します。
