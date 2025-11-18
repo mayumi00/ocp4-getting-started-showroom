@@ -1,4 +1,4 @@
-= OpenShift を探索
+= Explore OpenShift
 :navtitle: OpenShift を探索
 
 include::vars.adoc[]
@@ -47,9 +47,9 @@ oc version
 [.console-output]
 [source,subs="attributes"]
 ----
-クライアントバージョン: {ocp4_starter_cli_version}
-Kustomize バージョン: v5.5.0
-Kubernetes バージョン: v1.32.6
+Client Version: {ocp4_starter_cli_version}
+Kustomize Version: v5.5.0
+Kubernetes Version: v1.32.6
 ----
 
 === CLI を使用したログイン
@@ -63,7 +63,7 @@ Kubernetes バージョン: v1.32.6
 
 このコマンドは、ユーザー名とパスワードを使用してクラスターへの認証を行います。
 
-注: 「証明書は不明な認証局によって署名されています」というメッセージが表示された場合、このワークショップ環境では無視してかまいません。
+NOTE: 「証明書は不明な認証局によって署名されています」というメッセージが表示された場合、このワークショップ環境では無視してかまいません。
 これは、クラスターの API 証明書が自己署名されていることを示しています。これは開発環境やテスト環境では一般的です。
 
 [.bordershadow]
@@ -102,9 +102,9 @@ oc projects
 [.console-output]
 [source,subs="attributes"]
 ----
-このサーバーには「Workspace ({ocp4_starter_project})」というプロジェクトが 1 つあります。
+You have one project on this server: "Workspace ({ocp4_starter_project})".
 
-サーバー「{ocp4_starter_api_url}」でプロジェクト「{ocp4_starter_project}」を使用しています。
+Using project "{ocp4_starter_project}" on server "{ocp4_starter_api_url}".
 ----
 
 完了です！これで、Webコンソールとコマンドラインインターフェースの両方からOpenShiftにアクセスできるようになりました。以降のセクションでは、これらのツールを使用して、プラットフォーム上でアプリケーションをデプロイおよび管理する方法を説明します。
