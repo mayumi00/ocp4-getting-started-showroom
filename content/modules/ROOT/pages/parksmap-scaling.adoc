@@ -4,7 +4,7 @@
 include::vars.adoc[]
 
 [#deployments_and_replication_controllers]
-== 背景：デプロイメントとレプリカセット
+== 背景：DeploymentReplicaSets
 
 *Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS) と *ReplicationControllers* (RC) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
 
@@ -22,7 +22,7 @@ Kubernetes では、*Deployment* はデプロイ方法を定義します。ほ�
 [#exploring_deployment_related_objects]
 == 演習: デプロイメント関連オブジェクトの探索
 
-*ReplicaSet*と*Deployment*の背景を理解したので、これらがどのように連携するかを確認しましょう。 OpenShift に `parksmap` イメージをデプロイするように指示したときに作成された *Deployment* を確認します。
+*ReplicaSet* と *Deployment*の背景を理解したので、これらがどのように連携するかを確認しましょう。 OpenShift に `parksmap` イメージをデプロイするように指示したときに作成された *Deployment* を確認します。
 
 [source,role="copypaste"]
 ----
