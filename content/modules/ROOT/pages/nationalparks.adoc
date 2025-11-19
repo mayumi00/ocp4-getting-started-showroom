@@ -96,7 +96,7 @@ Builder Imageとして *Java* が選択されていることを確認し、OpenJ
 
 *General* セクションまでスクロールダウンし、以下の項目を追加します。
 
-*Application Name* :
+*Application* :
 [source,role=copypaste]
 ----
 workshop
@@ -197,7 +197,7 @@ oc logs -f builds/nationalparks-1
 * この新しいデプロイメント用に *ReplicaSet* (RS)が生成されます。
 * RSは実行中の *Pod* が存在しないことを検出し、デフォルトのレプリカ数が1であるため、1つのPodをデプロイします。
 
-最後に、`oc get pods` コマンドを実行すると、ビルド Pod が終了（exited）し、アプリケーション *Pod* が準備完了(ready)かつ実行状態(running)にあることがわかります。
+最後に、`oc get pods` コマンドを実行すると、ビルド Pod が終了（exited）し、アプリケーション *Pod* が準備完了(ready)かつ実行中(running)にあることがわかります。
 
 [.console-output]
 [source]
