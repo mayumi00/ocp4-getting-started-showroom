@@ -4,7 +4,7 @@
 include::vars.adoc[]
 
 [#deployments_and_replication_controllers]
-== 背景：DeploymentとReplicaSets
+== 背景: DeploymentとReplicaSets
 
 *Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS) と *ReplicationControllers* (RC) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
 
@@ -64,12 +64,12 @@ TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の
 oc scale --replicas=2 deployment/parksmap
 ----
 
-または、*Developer Perspective* で最大 2 つのポッドにスケールアップすることもできます。トポロジビューから、`parksmap` デプロイメント構成をクリックし、*Details* タブを選択します。
+または、*Developer Perspective* で最大 2 つのPodにスケールアップすることもできます。トポロジビューから、`parksmap` デプロイメント構成をクリックし、*Details* タブを選択します。
 
 [.bordershadow]
 image::parksmap-details.png[link="self",window=_blank]
 
-次に、ポッドの可視化の横にある *^* アイコンをクリックして、最大 2 つのポッドにスケールアップします。
+次に、Podの可視化の横にある *^* アイコンをクリックして、最大 2 つのPodにスケールアップします。
 
 [.bordershadow]
 image::parksmap-scaleup.png[link="self",window=_blank]
@@ -88,7 +88,7 @@ NAME                  DESIRED   CURRENT   READY   AGE
 parksmap-65c4f8b676   2         2         2       23m
 ----
 
-レプリカが2つになったことがわかります。 `oc get pods` コマンドでポッドの数を確認します。
+レプリカが2つになったことがわかります。 `oc get pods` コマンドでPodの数を確認します。
 
 [source,role="copypaste"]
 ----
