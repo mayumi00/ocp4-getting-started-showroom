@@ -17,7 +17,7 @@ Web コンソールで現在の権限を表示するには、link:{ocp4_starter_
 [.bordershadow]
 image::parksmap-permissions-namespace.png[link="self",window=_blank]
 
-*Role Bindings* タブを選択し、*Namespace Role Binding* でフィルターして、選択したプロジェクトのすべての権限を表示します。
+*Role Bindings* タブを選択し、Filterをクリックし *Namespace Role Binding* でフィルターして、選択したプロジェクトのすべての権限を表示します。
 
 [.bordershadow]
 image::parksmap-permissions-membership.png[link="self",window=_blank]
@@ -41,9 +41,9 @@ image::parksmap-permissions-membership-serviceaccount-list.png[link="self",windo
   * Role Binding Name: *view*
   * Namespace: *{ocp4_starter_project}*
   * Role Name: *view*
-  * Subject: Service Account*
+  * Subject: *Service Account*
   * Subject Namespace: *{ocp4_starter_project}*
-  * Subject Name: *default*.
+  * Subject Name: *default*
 +
 image::parksmap-permissions-membership-serviceaccount-edit.png[link="self",window=_blank]
 +
