@@ -3,7 +3,7 @@
 include::vars.adoc[]
 :experimental:
 
-このセクションでは、ParksMap アプリケーションの Web コンポーネント（別名 `parksmap`）をデプロイします。このコンポーネントは、OpenShift のサービス検出メカニズムを使用してバックエンドサービスを検出し、そのデータをマップ上に表示します。
+このセクションでは、ParksMap アプリケーションの Web コンポーネント（別名 `parksmap`）をデプロイします。このコンポーネントは、OpenShift のサービスディスカバリ（service discovery）メカニズムを使用してバックエンドサービスを検出し、そのデータをマップ上に表示します。
 
 [.bordershadow]
 image::roadshow-app-architecture-parksmap-1.png[link="self",window=_blank]
@@ -13,7 +13,7 @@ image::roadshow-app-architecture-parksmap-1.png[link="self",window=_blank]
 
 まずは、できるだけ簡単なことから始めましょう。OpenShift で実行するための、ごく普通の Docker 形式のイメージを取得します。これは非常に簡単です。OpenShift では、Web コンソールから直接実行できます。
 
-*{ocp4_starter_project}* プロジェクトの {ocp4_starter_console_url}/topology/ns/{ocp4_starter_project}[トポロジビュー、link="self",window=_blank] に戻ります。
+*{ocp4_starter_project}* プロジェクトの {ocp4_starter_console_url}/topology/ns/{ocp4_starter_project}[topology view, link="self",window=_blank] に戻ります。
 
 左上の *+* アイコンをクリックします。OpenShift にアプリケーションをデプロイするための複数のオプションがあるメニューが表示されます。*Container images* をクリックすると、デプロイするイメージの情報を指定できるダイアログが開きます。
 
@@ -34,33 +34,33 @@ OpenShift は指定されたコンテナレジストリにアクセスし、イ�
 [.bordershadow]
 image::parksmap-image.png[link="self",window=_blank]
 
-*ランタイムアイコン*で、OpenShiftトポロジビューのアイコンを選択します。このフロントエンドはSpring Bootで作成されているため、*spring-boot*を選択してください。
+*Runtime Icon* で、OpenShiftトポロジビューのアイコンを選択します。このフロントエンドはSpring Bootで作成されているため、*spring-boot* を選択してください。
 
 以下の値が設定されていることを確認してください。
 
-*アプリケーション名*:
+*Application Name(アプリケーション名)* :
 [source,role=copypaste]
 ----
 workshop
 ----
 
-*名前*:
+*Name (名前)* :
 [source,role=copypaste]
 ----
 parksmap
 ----
 
-注: *アプリケーション名*はアプリケーション全体の名前で、*名前*フィールドは個々のコンポーネントに付けられた名前を表します。この場合、デプロイするコンテナは`parksmap`コンポーネントです。
+NOTE: *Application Name* はアプリケーション全体の名前で、*Name* フィールドは個々のコンポーネントに付けられた名前を表します。この場合、デプロイするコンテナは `parksmap` コンポーネントです。
 
-*リソースタイプ*セクションで*デプロイメント*が選択されていることを確認してください。
+*Resource type* セクションで *Deployment* が 選択されていることを確認してください。
 
-注: *リソースタイプ*については、後の章で詳しく説明します。
+NOTE: *Resource type* については、後の章で詳しく説明します。
 
-*「詳細オプション」*の下にある*ルートの作成*の横にあるチェックボックスを*オフ*にしてください。ワークショップの後半で、学習のためにアプリケーションの*ルート*を作成します。
+*Advanced options* (詳細オプション)の下にある *Create a route* (ルートの作成)の横にあるチェックボックスを *オフ* にしてください。ワークショップの後半で、学習のためにアプリケーションの *Route* (ルート)を作成します。
 
-ページ下部の「詳細オプション」セクションにある*ラベル*をクリックし、後でこのデプロイメントを識別するために使用するラベルを追加します。ラベルは、Webコンソールとコマンドラインでコンポーネントを識別およびフィルタリングするのに役立ちます。
+ページ下部のAdvanced optionsセクションにある *Labels* (ラベル)をクリックし、後でこのデプロイメントを識別するために使用するラベルを追加します。ラベルは、Webコンソールとコマンドラインでコンポーネントを識別およびフィルタリングするのに役立ちます。
 
-ラベルを3つ追加します。各ラベルに名前=値のペアを入力した後、次のラベルを入力する前に、キーボードの[Return]キー（またはキーボードによっては[Enter]キー）を押します。最初のラベルはアプリケーションの名前です。
+ラベルを3つ追加します。各ラベルに名前=値のペアを入力した後、次のラベルを入力する前に、キーボードの `Return` キー（またはキーボードによっては `Enter` キー）を押します。最初のラベルはアプリケーションの名前です。
 
 [source,role=copypaste]
 ----
@@ -87,26 +87,26 @@ image::parksmap-image-options.png[width=600,link="self",window=_blank]
 [.bordershadow]
 image::parksmap-advanced-image-options.png[width=600,link="self",window=_blank]
 
-次に、青い「Create」ボタンをクリックします。「Topology」ページに移動し、「workshop」アプリケーションの「parksmap」デプロイメント構成の可視化が表示されます。
+次に、青い *Create* (作成)ボタンをクリックします。*Topology* ページに移動し、`workshop` アプリケーションの `parksmap` デプロイメント構成の可視化が表示されます。
 
 [.bordershadow]
 image::parksmap-dc-topology.png[width=400,link="self",window=_blank]
 
 OpenShift にコンテナイメージをデプロイするために必要な手順はこれだけです。これは、EXPOSE ポートの定義、*root ユーザー* やその他のユーザー名での実行の必要がないこと、起動時に実行される単一の非終了 CMD など、ベストプラクティスに準拠したコンテナイメージであればどれでも機能します。これらの設定は、アプリケーションの https://github.com/openshift-roadshow/parksmap-web/blob/master/Dockerfile[Dockerfile, window="_blank"] で確認できます。
 
-注: 大規模なアプリケーションをデプロイする際には、適切なラベルを付与することが重要です。OpenShift は、Overview ページでコンポーネントを定義およびグループ化するために、ラベル *app* を使用します。明示的に指定しない場合、OpenShift はデフォルト値でこのラベルを作成します。
+NOTE: 大規模なアプリケーションをデプロイする際には、適切なラベルを付与することが重要です。OpenShift は、Overview ページでコンポーネントを定義およびグループ化するために、ラベル *app* を使用します。明示的に指定しない場合、OpenShift はデフォルト値でこのラベルを作成します。
 
 [#containers_and_pods]
-== 背景：コンテナとポッド
+== 背景：コンテナとPod
 
-本題に入る前に、コンテナと*ポッド*の関係性を理解することが重要です。このワークショップではこれらのテクノロジーの背景説明は行いませんが、ご質問があれば講師までお知らせください。すぐに実践に移り、使い始めることができます。
+本題に入る前に、コンテナと *Pod* の関係性を理解することが重要です。このワークショップではこれらのテクノロジーの背景説明は行いませんが、ご質問があれば講師までお知らせください。すぐに実践に移り、使い始めることができます。
 
-OpenShift（およびKubernetes）では、デプロイ可能な最小単位は*ポッド*です。*ポッド*とは、1つ以上のhttps://opencontainers.org/[OCIコンテナ、window="_blank"]のグループであり、これらは一緒にデプロイされ、同じホスト上に配置されることが保証されています。
+OpenShift（およびKubernetes）では、デプロイ可能な最小単位は *Pod* です。*Pod* とは、1つ以上のhttps://opencontainers.org/[OCI containers、window="_blank"]のグループであり、これらは一緒にデプロイされ、同じホスト上に配置されることが保証されています。
 OpenShift公式ドキュメントより：
 
-[引用]
+[quote]
 __
-各*ポッド*には独自のIPアドレスがあり、ポート空間全体を所有します。また、ポッド内のコンテナはストレージを共有できます。*ポッド*には1つ以上のラベルを「タグ付け」することができ、これらのラベルは1回の操作で複数の*ポッド*グループを選択および管理するために使用できます。
+各 *Pod* には独自のIPアドレスがあり、ポート空間全体を所有します。また、Pod内のコンテナはストレージを共有できます。*Pod* には1つ以上のラベルを「タグ付け」することができ、これらのラベルは1回の操作で複数の *Pod* グループを選択および管理するために使用できます。
 __
 
 *Pod* には複数の OCI コンテナを含めることができます。一般的な考え方としては、*Pod* には「メインプロセス」と、そのプロセスと連動して実行する補助サービスが含まれます。*Pod* に配置できるコンテナの例としては、Apache HTTPD サーバー、ログアナライザー、アップロードされたファイルの管理に役立つファイルサービスなどがあります。
@@ -114,7 +114,7 @@ __
 [#pod の検証]
 == 演習: Pod の検証
 
-トポロジビューで「parksmap」エントリをクリックすると、デプロイメントに関する情報が表示されます。デフォルトで *リソース* タブが表示される場合があります。その場合は、*詳細* タブをクリックしてください。
+トポロジビューで　`parksmap` エントリをクリックすると、デプロイメントに関する情報が表示されます。デフォルトで *Resources* (リソース) タブが表示される場合があります。その場合は、*Details* (詳細)タブをクリックしてください。
 
 [.bordershadow]
 image::switchtoresources.png[link="self",window=_blank]
@@ -124,9 +124,9 @@ image::switchtoresources.png[link="self",window=_blank]
 [.bordershadow]
 image::parksmap-overview.png[link="self",window=_blank]
 
-注: このビューには、アプリのヘルスチェックを追加することを提案する情報ボックスが表示されます。これは後で設定するため、今は右上の X アイコンをクリックしてこの情報ボックスを閉じてください。
+NOTE: このビューには、アプリのヘルスチェックを追加することを提案する情報ボックスが表示されます。これは後で設定するため、今は右上の X アイコンをクリックしてこの情報ボックスを閉じてください。
 
-また、Web コンソールで [ワークロード] -> [Pods] に移動すると、*プロジェクト* 内に作成されたすべての *Pod* のリストを取得できます。
+また、Web コンソールで *Workloads(ワークロード) -> Pods* に移動すると、*Project* 内に作成されたすべての *Pod* のリストを取得できます。
 
 [.bordershadow]
 image::parksmap-podlist.png[link="self",window=_blank]
@@ -145,8 +145,8 @@ oc get pods
 [.console-output]
 [source]
 ----
-NAME READY STATUS RESTARTS AGE
-parksmap-6444cdcd46-hp9st 1/1 Running 0 50s
+NAME                        READY   STATUS    RESTARTS   AGE
+parksmap-6444cdcd46-hp9st   1/1     Running   0          50s
 ----
 
 上記の出力には、現在の *Project* 内のすべての *Pod* が一覧表示されており、*Pod* の名前、状態、再起動回数、稼働時間も含まれています。
@@ -155,7 +155,7 @@ parksmap-6444cdcd46-hp9st 1/1 Running 0 50s
 
 次の構文を使用して、出力形式を *YAML* に変更します。
 
-注: 出力で正しい *Pod* 名を使用していることを確認してください。
+NOTE: 出力で正しい *Pod* 名を使用していることを確認してください。
 
 [source,role="copypaste"]
 ----
@@ -203,7 +203,7 @@ metadata:
 ...............
 ----
 
-ウェブインターフェースの「Pod」詳細ページには、多くの情報が表示されます。「Pod」の名前をクリックすると、詳細ページが表示されます。また、「Topology」ページで「parksmap」デプロイメントをクリックし、「Resources」を選択して「Pod」の名前をクリックすることでも、詳細ページに移動できます。
+Webインターフェースの *Pod* の詳細ページには、多くの情報が表示されます。*Pod* の名前をクリックすると、詳細ページが表示されます。また、*Topology* ページで `parksmap` Deploymentをクリックし、*Resources* を選択して *Pod* の名前をクリックすることでも、詳細ページに移動できます。
 
 [.bordershadow]
 image::parksmap-dc-resources.png[link="self",window=_blank]
@@ -216,28 +216,28 @@ image::parksmap-pod.png[link="self",window=_blank]
 [.bordershadow]
 image::parksmap-pod-events.png[link="self",window=_blank]
 
-「parksmap」イメージの実行には、完了までに少し時間がかかる場合があります。イメージの実行を要求された各 OpenShift ノードは、ノードがまだイメージをローカルにキャッシュしていない場合は、イメージをプル（ダウンロード）する必要があります。イメージのダウンロードとデプロイメントのステータスは、*Pod* の詳細ページ、またはコマンドラインから先ほど使用した `oc get pods` コマンドで確認できます。
+`parksmap` イメージの実行には、完了までに少し時間がかかる場合があります。イメージの実行を要求された各 OpenShift ノードは、ノードがまだイメージをローカルにキャッシュしていない場合は、イメージをプル（ダウンロード）する必要があります。イメージのダウンロードとデプロイメントのステータスは、*Pod* の詳細ページ、またはコマンドラインから先ほど使用した `oc get pods` コマンドで確認できます。
 
 [#customizing_image_lifecycle_behavior]
 == 背景：イメージのライフサイクル動作のカスタマイズ
 
-OpenShift がノードの CRI (Container Runtime Interface) ランタイム（Docker デーモンまたは CRI-O）にイメージの実行を要求するたびに、ランタイムは実行に必要なイメージの適切なバージョンがあるかどうかを確認します。
+OpenShift がノードの CRI (Container Runtime Interface) ランタイム（Docker daemonまたは CRI-O）にイメージの実行を要求するたびに、ランタイムは実行に必要なイメージの適切なバージョンがあるかどうかを確認します。
 適切なバージョンがない場合は、指定されたレジストリからイメージをプルします。
 
 この動作をカスタマイズする方法はいくつかあります。詳細は、{ocp4_starter_openshift_docs}/html/images/managing-images[OpenShift Documentation,window='_blank'] のリンクをご覧ください。
 
 [#services]
-== 背景: サービス
+== 背景: Service(サービス)
 
-*サービス*は、OpenShift内でトラフィックを*ポッド*にルーティングするための便利な抽象化レイヤーを提供します。また、これらの*ポッド*に送信されるトラフィックのロードバランサーとしても機能します。例えば、トラフィックの増加に対応するためにより多くの「parksmap」インスタンスが必要になった場合、より多くの*ポッド*を起動できます。OpenShiftはこれらのポッドを*サービス*のエンドポイントとして自動的にマッピングします。受信リクエストは、`parksmap`がリクエストをより適切に処理するようになったこと以外、何も変化を感じません。
+*Service* は、OpenShift内でトラフィックを *Pod* にルーティングするための便利な抽象化レイヤーを提供します。また、これらの *Pod* に送信されるトラフィックのロードバランサーとしても機能します。例えば、トラフィックの増加に対応するためにより多くの `parksmap` インスタンスが必要になった場合、より多くの *Pod* を起動できます。OpenShiftはこれらのPodを *Service* のエンドポイントとして自動的にマッピングします。受信リクエストは、`parksmap` がリクエストをより適切に処理するようになったこと以外、何も変化を感じません。
 
-OpenShiftにイメージの実行を指示すると、自動的に*サービス*が作成されます。サービスは内部構造であることに注意してください。「外部の世界」、つまりOpenShift環境の外部にあるものにはアクセスできません。これは問題ありません。後で*ルート*を使用してこの問題に対処する方法を学習します。
+OpenShiftにイメージの実行を指示すると、自動的に *Service* が作成されます。サービスは内部構造であることに注意してください。「外部の世界」、つまりOpenShift環境の外部にあるものにはアクセスできません。これは問題ありません。後で *Route* を使用してこの問題に対処する方法を学習します。
 
 *Service* は、*Selector* を使用して複数の *Pod* にマッピングされます。*Selector* は *Label* を使用して、トラフィックを受信する Pod を決定します。
 
 公式 OpenShift ドキュメントには、Services に関する詳細情報（手動で作成するための YAML 形式を含む）が多数記載されています。
 
-*Service* の基本を理解したところで、デプロイしたイメージ用に作成された *Service* を見てみましょう。 *プロジェクト*で定義されている*サービス*を表示するには、次のコマンドを入力します。
+*Service* の基本を理解したところで、デプロイしたイメージ用に作成された *Service* を見てみましょう。 *Project* で定義されている *Service* を表示するには、次のコマンドを入力します。
 
 [source,role="copypaste"]
 ----
@@ -249,19 +249,19 @@ oc get services
 [.console-output]
 [source]
 ----
-NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
-parksmap ClusterIP 172.31.106.159 <none> 8080/TCP 15m
+NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+parksmap   ClusterIP   172.31.106.159   <none>        8080/TCP   15m
 ----
 
-上記の出力では、「parksmap」という名前の*サービス*があり、IP/ポートの組み合わせが
-172.30.22.209/8080TCP であることがわかります。各*サービス*は作成時に固有のIPアドレスが割り当てられるため、実際のIPアドレスは異なる場合があります。*サービス*のIPアドレスは固定で、*サービス*の存続期間中は変更されません。
+上記の出力では、`parksmap` という名前の *Service* があり、IP/ポートの組み合わせが
+172.30.22.209/8080TCP であることがわかります。各 *Service* は作成時に固有のIPアドレスが割り当てられるため、実際のIPアドレスは異なる場合があります。*Service* のIPアドレスは固定で、*Service* の存続期間中は変更されません。
 
-*トポロジ* ビューで、`parksmap` デプロイメントをクリックし、*リソース* をクリックすると、サービス情報が表示されます。
+*Topology* ビューで、`parksmap` デプロイメントをクリックし、*Resources* をクリックすると、サービス情報が表示されます。
 
 [.bordershadow]
 image::parksmap-serviceslist.png[link="self",window=_blank]
 
-以下のコマンドを使用して YAML 形式でデータを表示することで、*サービス* に関するより詳細な情報を取得することもできます。
+以下のコマンドを使用して YAML 形式でデータを表示することで、*Service* に関するより詳細な情報を取得することもできます。
 
 [source,role="copypaste"]
 ----
@@ -332,7 +332,7 @@ deployment=parksmap
 
 これらの *Pod* ラベルは、*Service* の *Selector* がターゲットとするラベルと一致します。
 
-注: *Labels* はキーと値のペアです。同じ*プロジェクト*（*名前空間*とも呼ばれます）内の、*セレクタ*に一致するラベルを持つすべての*ポッド*が、*サービス*に関連付けられます。この動作を確認するには、以下のコマンドを実行してください。
+NOTE: *Labels* はキーと値のペアです。同じ *Project* （ *ネームスペース/名前空間* とも呼ばれます）内の、*Selector* に一致するラベルを持つすべての *Pod* が、*Service* に関連付けられます。この動作を確認するには、以下のコマンドを実行してください。
 
 [source,role="copypaste"]
 ----
@@ -363,5 +363,5 @@ Session Affinity:  None
 Events:            <none>
 ----
 
-なぜエンドポイントが1つしか表示されないのか疑問に思うかもしれません。これは、現在実行中の*Pod*が1つしかないためです。次のラボでは、アプリケーションをスケーリングする方法を学習します。その時点で、*Service*に関連付けられた複数のエンドポイントが
+なぜエンドポイントが1つしか表示されないのか疑問に思うかもしれません。これは、現在実行中の *Pod*が  1つしかないためです。次のラボでは、アプリケーションをスケーリングする方法を学習します。その時点で、*Service* に関連付けられた複数のエンドポイントが
 表示されるようになります。
