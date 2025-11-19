@@ -20,7 +20,7 @@ image::roadshow-app-architecture-parksmap-1.png[link="self",window=_blank]
 [.bordershadow]
 image::openshift-console-add-container.png[link="self",window=_blank]
 
-*Image Name* フィールドに、以下の内容をコピー/貼り付けします。
+*Image name from external registry* フィールドに、以下の内容をコピー/貼り付けします。
 
 [source,role="copypaste",subs="attributes"]
 ----
@@ -36,7 +36,7 @@ image::parksmap-image.png[link="self",window=_blank]
 
 *Runtime Icon* で、OpenShiftのTopology View用のアイコンを選択します。このフロントエンドはSpring Bootで作成されているため、*spring-boot* を選択してください。
 
-以下の値が設定されていることを確認してください。
+以下の値が設定されていることを確認してください。(*Application Name* は違う名前になっているかもしれません。その場合は、テキストを入力してください）
 
 *Application Name(アプリケーション名)* :
 [source,role=copypaste]
@@ -60,7 +60,7 @@ NOTE: *Resource type* については、後の章で詳しく説明します。
 
 ページ下部のAdvanced optionsセクションにある *Labels* (ラベル)をクリックし、後でこのデプロイメントを識別するために使用するラベルを追加します。ラベルは、Webコンソールとコマンドラインでコンポーネントを識別およびフィルタリングするのに役立ちます。
 
-ラベルを3つ追加します。各ラベルに名前=値のペアを入力した後、次のラベルを入力する前に、キーボードの `Return` キー（またはキーボードによっては `Enter` キー）を押します。最初のラベルはアプリケーションの名前です。
+ラベルを3つ追加します。各ラベルの名前=値のペアを入力した後、次のラベルを入力する前に、キーボードの `Return` キー（またはキーボードによっては `Enter` キー）を押します。最初のラベルはアプリケーションの名前です。
 
 [source,role=copypaste]
 ----
@@ -101,7 +101,7 @@ NOTE: 大規模なアプリケーションをデプロイする際には、適�
 
 本題に入る前に、コンテナと *Pod* の関係性を理解することが重要です。このワークショップではこれらのテクノロジーの背景説明は行いませんが、ご質問があれば講師までお知らせください。すぐに実践に移り、使い始めることができます。
 
-OpenShift（およびKubernetes）では、デプロイ可能な最小単位は *Pod* です。*Pod* とは、1つ以上のhttps://opencontainers.org/[OCI containers、window="_blank"]のグループであり、これらは一緒にデプロイされ、同じホスト上に配置されることが保証されています。
+OpenShift（およびKubernetes）では、デプロイ可能な最小単位は *Pod* です。*Pod* とは、1つ以上の https://opencontainers.org/[OCI containers,window="_blank"]のグループであり、これらは一緒にデプロイされ、同じホスト上に配置されることが保証されています。
 OpenShift公式ドキュメントより：
 
 [quote]
@@ -155,11 +155,11 @@ parksmap-6444cdcd46-hp9st   1/1     Running   0          50s
 
 次の構文を使用して、出力形式を *YAML* に変更します。
 
-NOTE: 出力で正しい *Pod* 名を使用していることを確認してください。
+NOTE: 自分の出力から得られた *Pod* 名を使用してください。
 
 [source,role="copypaste"]
 ----
-oc get pod parksmap-1-gxbgq -o yaml
+oc get pod parksmap-6444cdcd46-hp9st -o yaml
 ----
 
 次のような出力が表示されるはずです（このワークショップではスペースの都合上、一部省略しています）。
@@ -224,7 +224,7 @@ image::parksmap-pod-events.png[link="self",window=_blank]
 OpenShift がノードの CRI (Container Runtime Interface) ランタイム（Docker daemonまたは CRI-O）にイメージの実行を要求するたびに、ランタイムは実行に必要なイメージの適切なバージョンがあるかどうかを確認します。
 適切なバージョンがない場合は、指定されたレジストリからイメージをプルします。
 
-この動作をカスタマイズする方法はいくつかあります。詳細は、{ocp4_starter_openshift_docs}/html/images/managing-images[OpenShift Documentation,window='_blank'] のリンクをご覧ください。
+この動作をカスタマイズする方法はいくつかあります。詳細は、link:{ocp4_starter_openshift_docs}/html/images/managing-images[OpenShift Documentation,window='_blank']をご覧ください。
 
 [#services]
 == 背景: Service(サービス)
