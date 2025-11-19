@@ -46,14 +46,13 @@ oc get rs
 [.console-output]
 [source]
 ----
-NAME                  DESIRED   CURRENT
- READY   AGE
+NAME                  DESIRED   CURRENT   READY   AGE
 parksmap-65c4f8b676   1         1         1       21m
 ----
 
 この出力は、現在 1 つの *Pod* がデプロイされる予定であることを示しています。 （`Desired`）に設定されており、実際にデプロイされている *Pod* は 1 つ（`Current`）です。この必要数を変更することで、OpenShift に必要となる *Pod* の数を増減させることができます。
 
-ヒント: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[ドキュメントの Horizo​​ntal Pod Autoscaler、window='_blank'] を参照してください。
+TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[ドキュメントの Horizo​​ntal Pod Autoscaler、window='_blank'] を参照してください。
 
 [#scaling_the_application]
 == 演習: アプリケーションのスケーリング
@@ -65,7 +64,7 @@ parksmap-65c4f8b676   1         1         1       21m
 oc scale --replicas=2 deployment/parksmap
 ----
 
-または、*Developer Perspective* で最大 2 つのポッドにスケールアップすることもできます。トポロジビューから、`parksmap` デプロイメント構成をクリックし、*詳細* タブを選択します。
+または、*Developer Perspective* で最大 2 つのポッドにスケールアップすることもできます。トポロジビューから、`parksmap` デプロイメント構成をクリックし、*Details* タブを選択します。
 
 [.bordershadow]
 image::parksmap-details.png[link="self",window=_blank]
@@ -135,7 +134,7 @@ Session Affinity:  None
 Events:            <none>
 ----
 
-*Service*のエンドポイントを確認する別の方法は、次のとおりです。
+*Service* のエンドポイントを確認する別の方法は、次のとおりです。
 
 [source,role="copypaste"]
 ----
