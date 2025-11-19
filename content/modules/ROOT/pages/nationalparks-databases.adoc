@@ -11,7 +11,7 @@ include::vars.adoc[]
 image::roadshow-app-architecture-nationalparks-2.png[link="self",window=_blank]
 
 [#storage]
-== 背景：ストレージ
+== 背景: ストレージ
 
 最も有用なアプリケーションは、何らかの形で「ステートフル」または「ダイナミック」であり、これは通常、データベースやその他の形式のデータストレージによって実現されます。このワークショップセクションでは、
 アプリケーションアーキテクチャにMongoDBを追加し、`nationalparks`デプロイメントを設定してデータベースに接続します。
@@ -68,10 +68,8 @@ image::mongodb_deploy_image_image.png[link="self",window=_blank]
 
 * *Show advanced Deployment options* をクリックします。
     - ここで、以前に作成した `mongodb-credentials` という名前のシークレットから取得される次の 2 つの環境変数を追加します。
-    - *+Add from ConfigMap or Secret* をクリックし、名前として `MONGO_INITDB_ROOT_USERNAME` と入力します。
-    - 値には、リソースとして `mongodb-credentials` 、キーとして `admin-usr` を選択します。
-    - 再度、*+Add from ConfigMap or Secret* をクリックし、名前として `MONGO_INITDB_ROOT_PASSWORD` と入力します。
-    - 値には、リソースとして `MONGO_INITDB_ROOT_PASSWORD` 、キーとして `admin-pwd` を選択します。
+    - *+Add from ConfigMap or Secret* をクリックし、名前として `MONGO_INITDB_ROOT_USERNAME` と入力します。値には、リソースとして `mongodb-credentials` 、キーとして `admin-usr` を選択します。
+    - 再度、*+Add from ConfigMap or Secret* をクリックし、名前として `MONGO_INITDB_ROOT_PASSWORD` と入力します。値には、リソースとして `MONGO_INITDB_ROOT_PASSWORD` 、キーとして `admin-pwd` を選択します。
 
 * Advanced options:
     - Create a route → OpenShift クラスター外部のクライアントはデータベースにアクセスしないため、*チェックを外します*。
@@ -99,7 +97,7 @@ image::mongodb_pod_details_terminal.png[link="self",window=_blank]
 mongosh -u admin -p secret --authenticationDatabase admin --eval 'use parksapp' --eval 'db.createUser({user: "parksapp", pwd: "keepsafe", roles: [{ role: "dbAdmin", db: "parksapp" },{ role: "readWrite", db: "parksapp" }]})' --quiet
 ----
 
-NOTE: 商用環境では、コンテナのエントリポイントを変更したり、https://kubernetes.io/docs/concepts/workloads/pods/init-containers/[init container, window="_blank"] を使用してデータベース構成を管理したりできます。
+NOTE: 商用環境では、コンテナのエントリポイントを変更したり、link:https://kubernetes.io/docs/concepts/workloads/pods/init-containers/[init container, window="_blank"] を使用してデータベース構成を管理したりできます。
 
 コマンドが成功すると、以下の出力が表示されます。
 
@@ -120,11 +118,11 @@ image::nationalparks_deployment_edit.png[link="self",window=_blank]
 
 `mongodb` の `MONGODB_SERVER_HOST` 値は、MongoDB コンテナイメージをデプロイしたときに作成された MongoDB *Service* に解決されます。
 
-他の 2 つの認証情報は、`mongodb-credentials` Secretから取得されます。
+- 他の 2 つの認証情報は、`mongodb-credentials` Secretから取得されます。
 
-*+Add from ConfigMap or Secret* をクリックし、名前に `MONGODB_USER` と入力します。値には、リソースとして `mongodb-credentials`、キーとして `app-usr` を選択します。
+- *+Add from ConfigMap or Secret* をクリックし、名前に `MONGODB_USER` と入力します。値には、リソースとして `mongodb-credentials`、キーとして `app-usr` を選択します。
 
-再度、*+Add from ConfigMap or Secret* をクリックし、名前に `MONGODB_PASSWORD` と入力します。値には、リソースとして `mongodb-credentials`、キーとして `app-pwd` を選択します。
+- 再度、*+Add from ConfigMap or Secret* をクリックし、名前に `MONGODB_PASSWORD` と入力します。値には、リソースとして `mongodb-credentials`、キーとして `app-pwd` を選択します。
 
 [.bordershadow]
 image::nationalparks_deployment_env_vars_secrets.png[link="self",window=_blank]
@@ -151,8 +149,6 @@ OpenShift にアプリケーションをデプロイする際は、Secret また
 == 演習: ラベルの追加
 
 次に、MongoDB デプロイメントに割り当てられたラベルを修正しましょう。*Topology* viewで MongoDB デプロイメントを選択し、_Actions → Edit Labels_ を選択します。
-
-== Exercise: Adding Labels
 
 [.bordershadow]
 image::mongodb_deployment_labels.png[link="self",window=_blank]
@@ -245,10 +241,6 @@ NOTE: Firefox 54 などのブラウザでは、出力された JSON が正しく
 https://parksmap-{ocp4_starter_project}.{ocp4_starter_apps_domain}
 ----
 
-There's just one thing. The main map *still* isn't displaying the parks.
-That's because the frontend only tries to talk to services that have
-the right *Label*.
-
 ただ一つ問題があります。メインマップにはまだ公園が表示されていません。
 これは、フロントエンドが適切な *Label* を持つサービスとのみ通信しようとしているためです。
 
@@ -256,7 +248,7 @@ the right *Label*.
 [#working_with_labels]
 == 演習: ラベルの操作
 
-*Services*、*Routes*、*Selectors*について学習した際に、*Label*が単なるキーと値のペアであることを学びました。一般的に、*Label*は単なる任意のキーと値のペアです。例えば、次のようになります。
+*Services*、*Routes*、*Selectors* について学習した際に、*Label* が単なるキーと値のペアであることを学びました。一般的に、*Label* は単なる任意のキーと値のペアです。例えば、次のようになります。
 
 * `pizza=pepperoni`
 * `pet=dog`
