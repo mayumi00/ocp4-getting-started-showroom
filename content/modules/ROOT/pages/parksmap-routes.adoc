@@ -3,7 +3,7 @@
 
 include::vars.adoc[]
 
-このワークショップセクションでは、アプリケーションを外部ユーザーがアクセスできるようにします。
+このセクションでは、アプリケーションを外部ユーザーがアクセスできるようにします。
 
 [.bordershadow]
 image::roadshow-app-architecture-parksmap-2.png[link="self",window=_blank]
@@ -94,7 +94,7 @@ NAME       HOST/PORT                                                           P
 parksmap   parksmap-{ocp4_starter_project}.{ocp4_starter_apps_domain}          parksmap   8080-tcp   edge          None
 ----
 
-`parksmap` デプロイメントの *Resources* タブの *Topology* ビューでも *Route* を確認できます。Topology の `parksmap` ノードに矢印アイコンが表示されています。これをクリックすると、ブラウザで *Route* の URL が開きます。
+`parksmap` デプロイメントの *Resources* タブの *Topology* Viewでも *Route* を確認できます。Topology の `parksmap` ノードに矢印アイコンが表示されています。これをクリックすると、ブラウザで *Route* の URL が開きます。
 
 [.bordershadow]
 image::parksmap-route-created.png[link="self",window=_blank]
