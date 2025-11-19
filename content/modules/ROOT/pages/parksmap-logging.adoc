@@ -20,7 +20,7 @@ OpenShift は、コンテナがすべての情報を `STDOUT` にログ出力す
 == 演習: ログの確認
 
 アプリケーションはすでにデプロイされているので、ログを確認できます。
-*トポロジ* ビューで `parksmap` エントリをクリックし、*リソース* タブをクリックします。*Pod* エントリの横に *View Logs* リンクが表示されます。
+*Topology*  viewで `parksmap` エントリをクリックし、*Resources* タブをクリックします。*Pod* エントリの横に *View Logs* リンクが表示されます。
 
 [.bordershadow]
 image::parksmap-view-logs-link.png[link="self",window=_blank]
@@ -40,7 +40,7 @@ WARNING: ログにエラーが見つかったとしても大丈夫です。す�
 oc logs -l app=parksmap
 ----
 
-アプリケーション ログが表示されます
+アプリケーション ログが表示されます。
 
 [.console-output]
 [source]
@@ -61,4 +61,4 @@ pleted in 16 ms
 2019-05-22 19:44:13.395  INFO 1 --- [nio-8080-exec-2] c.o.e.roadshow.rest.BackendsController   : Backends: getAll
 ----
 
-WARNING: ログをスクロールしていくと、サービスアカウントに関するエラーに気付くかもしれません。これは何でしょうか？ご安心ください。すぐに説明いたします。
+WARNING: ログをスクロールしていくと、service accountに関するエラーに気付くかもしれません。これは何でしょうか？ご安心ください。すぐに説明いたします。
