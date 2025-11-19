@@ -13,7 +13,7 @@ image::roadshow-app-architecture-parksmap-2.png[link="self",window=_blank]
 
 *Service* はOpenShift環境内で内部抽象化と負荷分散を提供しますが、OpenShiftの**外部**のクライアント（ユーザー、システム、デバイスなど）がアプリケーションにアクセスする必要がある場合があります。外部クライアントは、OpenShiftルーティングレイヤーを介してOpenShiftで実行されているアプリケーションにアクセスします。ルーティングレイヤーは、 *Route* オブジェクトを使用して設定できます。
 
-デフォルトのOpenShiftルーター（ https://www.haproxy.org/[HAProxy, window="_blank"] ）は、受信リクエストのHTTPヘッダーを使用して、接続をプロキシする場所を決定します。必要に応じて、*Route*にTLSなどのセキュリティを定義できます。 *Service* 、ひいては *Pod* に外部からアクセスできるようにするには、*Route* を作成する必要があります。
+デフォルトのOpenShiftルーター（ https://www.haproxy.org/[HAProxy, window="_blank"] ）は、受信リクエストのHTTPヘッダーを使用して、接続をプロキシする場所を決定します。必要に応じて、*Route* にTLSなどのセキュリティを定義できます。 *Service* 、ひいては *Pod* に外部からアクセスできるようにするには、*Route* を作成する必要があります。
 
 [#creating_a_route]
 == 演習: ルートの作成
@@ -23,8 +23,7 @@ image::roadshow-app-architecture-parksmap-2.png[link="self",window=_blank]
 ルートは、OpenShift コンソールまたは `oc` CLI を使用して作成できます。以下のいずれかのオプションを使用して、ルートを追加する方法を選択してください。
 
 ====
-
-*オプション A: OpenShift コンソール:*
+*OPTION A: OpenShift コンソール:*
 
 . *Networking -> Routes* をクリックし、*Create Route* ボタンをクリックします。
 . *Name* フィールドに *parksmap* と入力します。
@@ -38,7 +37,7 @@ TIP: クラスターアプリドメインのTLS証明書はデフォルトで使
 
 *Route* を作成するときに、*Route* のホスト名やパス、追加の TLS 構成などの他のオプションを指定できます。
 
-*オプション B: `oc` コマンドライン:*
+*OPTION B: `oc` コマンドライン:*
 
 *Service* を `expose` するには、まず既存の *Routes* がないことを確認します。
 
