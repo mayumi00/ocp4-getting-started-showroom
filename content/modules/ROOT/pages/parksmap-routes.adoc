@@ -28,7 +28,7 @@ image::roadshow-app-architecture-parksmap-2.png[link="self",window=_blank]
 . *Networking -> Routes* をクリックし、*Create Route* ボタンをクリックします。
 . *Name* フィールドに *parksmap* と入力します。
 . *Service* フィールドで *parksmap* を選択します。*Target Port* で *8080* を選択します。
-. *Security* セクションで *Secure route* にチェックを入れます。*TLS Termination* リストから「Edge*」を選択します。
+. *Security* セクションで *Secure route* にチェックを入れます。*TLS Termination* リストから *Edge* を選択します。
 . その他のフィールドはすべて空白のままにして、*Create* をクリックします。
 +
 image::parksmap-route-create-1.png[link="self",window=_blank]
