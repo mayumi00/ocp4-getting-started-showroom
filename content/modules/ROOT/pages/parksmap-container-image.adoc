@@ -256,7 +256,7 @@ parksmap   ClusterIP   172.31.106.159   <none>        8080/TCP   15m
 上記の出力では、`parksmap` という名前の *Service* があり、IP/ポートの組み合わせが
 172.30.22.209/8080TCP であることがわかります。各 *Service* は作成時に固有のIPアドレスが割り当てられるため、実際のIPアドレスは異なる場合があります。*Service* のIPアドレスは固定で、*Service* の存続期間中は変更されません。
 
-*Topology* ビューで、`parksmap` デプロイメントをクリックし、*Resources* をクリックすると、サービス情報が表示されます。
+*Topology* Viewで、`parksmap` デプロイメントをクリックし、*Resources* をクリックすると、サービス情報が表示されます。
 
 [.bordershadow]
 image::parksmap-serviceslist.png[link="self",window=_blank]
