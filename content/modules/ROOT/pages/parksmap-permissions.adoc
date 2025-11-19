@@ -1,4 +1,4 @@
-= パーミッション(権限)
+= パーミッション（権限）
 :navtitle: Permissions
 
 include::vars.adoc[]
@@ -12,7 +12,7 @@ OpenShift は宣言型プラットフォームであるため、一部のアク�
 OpenShift は、すべてのプロジェクトにいくつかの特別なService Accountを自動的に作成します。
 **default** Service Accountは Pod の実行を担当し、OpenShift は起動されるすべての Pod にこのService Accountを自動的に挿入します。このService Accountの権限を変更することで、追加機能を有効にできます。
 
-Web コンソールで現在の権限を表示するには、{ocp4_starter_console_url}/topology/ns/{ocp4_starter_project}[Topology view, link="self",window=_blank] に移動し、`parksmap` エントリをクリックして、*Details* タブに移動し、*Namespace* をクリックします。 
+Web コンソールで現在の権限を表示するには、link:{ocp4_starter_console_url}/topology/ns/{ocp4_starter_project}[Topology view, link="self",window=_blank] に移動し、`parksmap` エントリをクリックして、*Details* タブに移動し、*Namespace* をクリックします。 
 
 [.bordershadow]
 image::parksmap-permissions-namespace.png[link="self",window=_blank]
@@ -40,7 +40,8 @@ image::parksmap-permissions-membership-serviceaccount-list.png[link="self",windo
 . 次のフィールドを設定します:
   * Role Binding Name: *view*
   * Namespace: *{ocp4_starter_project}*
-  * Role Name: *view*, Subject: *Service Account*
+  * Role Name: *view*
+  * Subject: Service Account*
   * Subject Namespace: *{ocp4_starter_project}*
   * Subject Name: *default*.
 +
@@ -78,7 +79,7 @@ oc policy add-role-to-user view -z default
 `-z` 構文は特別なもので、文字列全体（この場合は `system:serviceaccount:{ocp4_starter_project}:default`）を入力する手間を省きます。これは便利なショートカットです。
 ****
 
-NOTE: `-z` フラグは、*現在の*プロジェクト内のservice accountに対してのみ機能します。別のプロジェクトのservice accountを参照する場合は、`-n <project>` スイッチを使用してください。
+NOTE: `-z` フラグは、 *現在の* プロジェクト内のservice accountに対してのみ機能します。別のプロジェクトのservice accountを参照する場合は、`-n <project>` スイッチを使用してください。
 ====
 
 [#redeploy_application]
