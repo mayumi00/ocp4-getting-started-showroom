@@ -34,7 +34,7 @@ OpenShift は指定されたコンテナレジストリにアクセスし、イ�
 [.bordershadow]
 image::parksmap-image.png[link="self",window=_blank]
 
-*Runtime Icon* で、OpenShiftトポロジビューのアイコンを選択します。このフロントエンドはSpring Bootで作成されているため、*spring-boot* を選択してください。
+*Runtime Icon* で、OpenShiftのTopology View用のアイコンを選択します。このフロントエンドはSpring Bootで作成されているため、*spring-boot* を選択してください。
 
 以下の値が設定されていることを確認してください。
 
@@ -97,7 +97,7 @@ OpenShift にコンテナイメージをデプロイするために必要な手�
 NOTE: 大規模なアプリケーションをデプロイする際には、適切なラベルを付与することが重要です。OpenShift は、Overview ページでコンポーネントを定義およびグループ化するために、ラベル *app* を使用します。明示的に指定しない場合、OpenShift はデフォルト値でこのラベルを作成します。
 
 [#containers_and_pods]
-== 背景：コンテナとPod
+== 背景: コンテナとPod
 
 本題に入る前に、コンテナと *Pod* の関係性を理解することが重要です。このワークショップではこれらのテクノロジーの背景説明は行いませんが、ご質問があれば講師までお知らせください。すぐに実践に移り、使い始めることができます。
 
@@ -114,7 +114,7 @@ __
 [#pod の検証]
 == 演習: Pod の検証
 
-トポロジビューで　`parksmap` エントリをクリックすると、デプロイメントに関する情報が表示されます。デフォルトで *Resources* (リソース) タブが表示される場合があります。その場合は、*Details* (詳細)タブをクリックしてください。
+Topology Viewで　`parksmap` エントリをクリックすると、デプロイメントに関する情報が表示されます。デフォルトで *Resources* (リソース) タブが表示される場合があります。その場合は、*Details* (詳細)タブをクリックしてください。
 
 [.bordershadow]
 image::switchtoresources.png[link="self",window=_blank]
@@ -219,7 +219,7 @@ image::parksmap-pod-events.png[link="self",window=_blank]
 `parksmap` イメージの実行には、完了までに少し時間がかかる場合があります。イメージの実行を要求された各 OpenShift ノードは、ノードがまだイメージをローカルにキャッシュしていない場合は、イメージをプル（ダウンロード）する必要があります。イメージのダウンロードとデプロイメントのステータスは、*Pod* の詳細ページ、またはコマンドラインから先ほど使用した `oc get pods` コマンドで確認できます。
 
 [#customizing_image_lifecycle_behavior]
-== 背景：イメージのライフサイクル動作のカスタマイズ
+== 背景: イメージのライフサイクル動作のカスタマイズ
 
 OpenShift がノードの CRI (Container Runtime Interface) ランタイム（Docker daemonまたは CRI-O）にイメージの実行を要求するたびに、ランタイムは実行に必要なイメージの適切なバージョンがあるかどうかを確認します。
 適切なバージョンがない場合は、指定されたレジストリからイメージをプルします。
