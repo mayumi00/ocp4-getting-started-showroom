@@ -8,7 +8,7 @@ include::vars.adoc[]
 
 *Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS) と *ReplicationControllers* (RC) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
 
-リンク: {ocp4_starter_openshift_docs}/html/building_applications/deployments[deployments documentation,window='_blank'] より:
+link:{ocp4_starter_openshift_docs}/html/building_applications/deployments[deployments documentation,window='_blank']: より:
 
 [quota]
 __
@@ -52,7 +52,7 @@ parksmap-65c4f8b676   1         1         1       21m
 
 この出力は、現在 1 つの *Pod* がデプロイされる予定であることを示しています。 （`Desired`）に設定されており、実際にデプロイされている *Pod* は 1 つ（`Current`）です。この必要数を変更することで、OpenShift に必要となる *Pod* の数を増減させることができます。
 
-TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[ドキュメントの Horizo​​ntal Pod Autoscaler、window='_blank'] を参照してください。
+TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[Horizontal Pod Autoscalers in the documentation,window='_blank'] を参照してください。
 
 [#scaling_the_application]
 == 演習: アプリケーションのスケーリング
@@ -152,12 +152,13 @@ parksmap   10.128.2.90:8080,10.131.0.40:8080   45m
 
 各 Pod は OpenShift 環境内で一意の IP アドレスを取得するため、IP アドレスは異なる可能性があります。エンドポイントリストを使用すると、サービスの背後にある Pod の数を素早く確認できます。
 
-また、Developer Perspective では、両方の *Pod* が実行中であることを確認できます。
+また、*Developer Perspective* では、両方の *Pod* が実行中であることを確認できます。
 
 [.bordershadow]
 image::parksmap-scaled.png[link="self",window=_blank]
 
-全体として、アプリケーションのスケーリングはこのようにシンプルです。OpenShift は既存のイメージの新しいインスタンスを起動するため、特に新しい Pod が配置されているノードにそのイメージが既にキャッシュされている場合は、アプリケーションのスケーリングが非常に迅速に実行されます。https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/[scheduled on, window="_blank"]。
+全体的に見て、アプリケーションのスケーリングは極めてシンプルです。OpenShiftは既存のイメージの新しいインスタンスを起動するため、特に、新しいPodが https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/[スケジュールされた, window="_blank"]ノードにそのイメージが既にキャッシュされている場合、アプリケーションのスケーリングは非常に迅速に行われます。
+
 
 [#application_self_healing]
 == アプリケーションの「自己修復」
@@ -197,4 +198,4 @@ link:{ocp4_starter_openshift_docs}/html/building_applications/application-health
 
 お好きな方法でスケールダウンしてください。
 
-警告: 1 Pod にスケールダウンしないと、後のセクションで予期しない動作が発生します。これはアプリケーションのコーディング方法によるものであり、OpenShift とは関係ありません。
+WARNING:  1 Pod にスケールダウンしないと、後のセクションで予期しない動作が発生します。これはアプリケーションのコーディング方法によるものであり、OpenShift とは関係ありません。
