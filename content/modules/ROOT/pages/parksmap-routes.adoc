@@ -16,7 +16,7 @@ image::roadshow-app-architecture-parksmap-2.png[link="self",window=_blank]
 デフォルトのOpenShiftルーター（ https://www.haproxy.org/[HAProxy, window="_blank"] ）は、受信リクエストのHTTPヘッダーを使用して、接続をプロキシする場所を決定します。必要に応じて、*Route* にTLSなどのセキュリティを定義できます。 *Service* 、ひいては *Pod* に外部からアクセスできるようにするには、*Route* を作成する必要があります。
 
 [#creating_a_route]
-== 演習: ルートの作成
+== 演習: Routeの作成
 
 `parksmap` アプリケーションをデプロイした際に、*Route* を作成するためのチェックボックスをオフにしたことを覚えているかもしれません。通常は自動的に作成されます。幸い、*Route* の作成は簡単なプロセスです。
 
