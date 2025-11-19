@@ -13,7 +13,7 @@ include::vars.adoc[]
 
 == Web コンソールでプロジェクトを確認する
 
-*{ocp4_starter_project}* というプロジェクトがすでに作成されています。まずは、{ocp4_starter_console_url}[web console,window='_blank'] というリンクからプロジェクトを確認してください。
+*{ocp4_starter_project}* というプロジェクトがすでに作成されています。まずは、link:{ocp4_starter_console_url}[web console,window='_blank']からプロジェクトを確認してください。
 
 OpenShift Web コンソールにログインしたら、プロジェクトのドロップダウンからプロジェクトを探して選択します。プロジェクトの概要を確認すると、プロジェクトのリソースとアクティビティの概要が表示されます。
 
