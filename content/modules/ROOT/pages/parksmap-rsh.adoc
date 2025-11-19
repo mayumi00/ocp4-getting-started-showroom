@@ -69,7 +69,7 @@ cat /var/run/secrets/kubernetes.io/serviceaccount/token
 
 OpenShift Web コンソールは、CLI を使用せずにコンテナのターミナルセッションにアクセスできる便利な方法も提供します。
 
-Web コンソールから Pod のターミナルにアクセスするには、Topology view,に移動し、`parksmap` エントリをクリックしてから、*Pod* をクリックします。 
+Web コンソールから Pod のターミナルにアクセスするには、Topology view に移動し、`parksmap` エントリをクリックしてから、*Pod* をクリックします。 
 
 [.bordershadow]
 image::parksmap-rsh-dev-console-pod.png[link="self",window=_blank]
