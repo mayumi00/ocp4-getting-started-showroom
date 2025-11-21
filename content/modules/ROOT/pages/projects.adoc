@@ -13,23 +13,23 @@ include::vars.adoc[]
 
 == Webコンソールでプロジェクトを確認する
 
-*{ocp4_starter_project}* というプロジェクトがすでに作成されています。まずは、link:{ocp4_starter_console_url}[Webコンソール,window='_blank']からプロジェクトを確認してください。
+*{ocp4_starter_project}* というプロジェクトがすでに作成されています。まずは link:{ocp4_starter_console_url}[Webコンソール,window='_blank'] からプロジェクトを確認してください。
 
 OpenShift Webコンソールにログインしたら、プロジェクトのドロップダウンからプロジェクトを探して選択します。プロジェクトの概要を確認すると、プロジェクトのリソースとアクティビティの概要が表示されます。
 
 [.bordershadow]
 image::openshift-console-project.png[link="self",window=_blank]
 
-=== Topology View
+=== Topology(トポロジー) View
 
 プロジェクト内のアプリケーションとそのコンポーネントを視覚的に表示するTopologyパースペクティブについて理解を深めましょう。
 
-左側のメニューから *Workloads* に移動し、*Topology* に移動します。
+左側のメニューから *Workloads* に移動し、*Topology(トポロジー)* に移動します。
 
 [.bordershadow]
 image::openshift-console-topology.png[link="self",window=_blank]
 
-まだ何もデプロイされていないため、アプリケーションやコンポーネントは表示されません。ワークショップを進めていくと、この *Topology* Viewでアプリケーションのコンポーネントを視覚化し、操作できるようになります。
+まだ何もデプロイされていないため、アプリケーションやコンポーネントは表示されません。ワークショップを進めていくと、この *Topology(トポロジー)* Viewでアプリケーションのコンポーネントを視覚化し、操作できるようになります。
 
 == コマンドラインでのプロジェクトの操作
 
