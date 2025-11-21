@@ -4,18 +4,18 @@
 include::vars.adoc[]
 
 [#deployments_and_replication_controllers]
-== 背景: DeploymentとReplicaSets
+== 背景: Deployment と ReplicaSets
 
-*Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS) と *ReplicationControllers* (RC) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
+*Service* は、作成・削除される可能性のある *Pod* のルーティングと負荷分散を提供します。一方、*ReplicaSets* (RS、レプリカセット) と *ReplicationControllers* (RC、レプリケーションコントローラー) は、必要な数の *Pod* (レプリカ) の実行を指定し、確実に実行するために使用します。例えば、アプリケーションサーバーで常に 3 つの *Pod* (インスタンス) を実行したい場合は、*ReplicaSet* が必要です。RS がないと、強制終了または終了した *Pod* は自動的に再起動されません。*ReplicaSets* と *ReplicationControllers* は、OpenShift における自己修復機能を提供します。*Deployment* は *ReplicaSet* を制御し、*ReplicationControllers* は *DeploymentConfigs* によって制御されます。
 
-link:{ocp4_starter_openshift_docs}/html/building_applications/deployments[deployments documentation,window='_blank']: より:
+link:{ocp4_starter_openshift_docs}/html/building_applications/deployments[デプロイメントのドキュメント,window='_blank']: より:
 
 [quota]
 __
 レプリケーションコントローラーと同様に、ReplicaSet はネイティブ Kubernetes API オブジェクトであり、指定された数の Pod レプリカが常に実行されていることを保証します。レプリカセットとレプリケーションコントローラーの違いは、レプリカセットがセットベースのセレクター要件をサポートするのに対し、レプリケーションコントローラーは等価性ベースのセレクター要件のみをサポートすることです。
 __
 
-Kubernetes では、*Deployment* はデプロイ方法を定義します。ほとんどの場合、*Pod*、*Service*、*ReplicaSet*、*Deployment* の各リソースを組み合わせて使用​​します。OpenShift は、Web コンソールまたは CLI を使用してコンテナイメージをデプロイする際に、これらをすべて自動的に作成します。
+Kubernetes では、*Deployment* (デプロイメント)はデプロイ方法を定義します。ほとんどの場合、*Pod*、*Service*、*ReplicaSet*、*Deployment* の各リソースを組み合わせて使用​​します。OpenShift は、Webコンソールまたは CLI を使用してコンテナイメージをデプロイする際に、これらをすべて自動的に作成します。
 
 *Deployment* や *Service* を使用せずに、いくつかの *Pod* と *ReplicaSet* が必要な高度なシナリオもあります。これらのケースにご興味がある場合は、ワークショップ終了後に講師にお問い合わせください。
 
@@ -52,19 +52,19 @@ parksmap-65c4f8b676   1         1         1       21m
 
 この出力は、現在 1 つの *Pod* がデプロイされる予定であることを示しています。 （`Desired`）に設定されており、実際にデプロイされている *Pod* は 1 つ（`Current`）です。この必要数を変更することで、OpenShift に必要となる *Pod* の数を増減させることができます。
 
-TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[Horizontal Pod Autoscalers in the documentation,window='_blank'] を参照してください。
+TIP: OpenShift の *Horizo​​ntalPodAutoscaler (HPA)* は、一連の Pod の CPU とメモリの使用状況をモニタリングし、インスタンスを追加することで RC を更新してアプリケーションの安定性を確保します。Horizo​​ntal Pod Autoscaler の詳細については、link:{ocp4_starter_openshift_docs}/html/nodes/working-with-pods#nodes-pods-autoscaling[ドキュメントのHorizontal Pod Autoscalers,window='_blank'] を参照してください。
 
 [#scaling_the_application]
 == 演習: アプリケーションのスケーリング
 
-この演習では、parksmap アプリケーションを最大 2 つのインスタンスにスケーリングします。これは、`oc scale` コマンドを使用するか、OpenShift Web コンソールで Desired Count を増やすことで実行できます。どちらか適切な方法を選択してください。
+この演習では、parksmap アプリケーションを最大 2 つのインスタンスにスケーリングします。これは、`oc scale` コマンドを使用するか、OpenShift Webコンソールで Desired Count (望ましい数) を増やすことで実行できます。どちらか適切な方法を選択してください。
 
 [source,role="copypaste"]
 ----
 oc scale --replicas=2 deployment/parksmap
 ----
 
-または、*Developer Perspective* で最大 2 つのPodにスケールアップすることもできます。トポロジビューから、`parksmap` デプロイメント構成をクリックし、*Details* タブを選択します。
+または、*Developer パースペクティブ* で最大 2 つのPodにスケールアップすることもできます。 Topology（トポロジー）ビューから、`parksmap` デプロイメント構成をクリックし、*Details* (詳細)タブを選択します。
 
 [.bordershadow]
 image::parksmap-details.png[link="self",window=_blank]
@@ -103,14 +103,14 @@ parksmap-65c4f8b676-fxcrq 1/1 Running 0 92s
 parksmap-65c4f8b676-k5gkk 1/1 Running 0 24m
 ----
 
-最後に、*Service* が 2 つのエンドポイントを正確に反映していることを確認します。
+最後に、*Service* (サービス)が 2 つのエンドポイントを正確に反映していることを確認します。
 
 [source,role="copypaste"]
 ----
 oc describe svc parksmap
 ----
 
-次のような出力が表示されます。*Service* が 2 つの *Endpoints* をターゲットにしていることに注意してください。
+次のような出力が表示されます。*Service* (サービス)が 2 つの *Endpoints* (エンドポイント)をターゲットにしていることに注意してください。
 
 [.console-output]
 [source]
@@ -152,12 +152,12 @@ parksmap   10.128.2.90:8080,10.131.0.40:8080   45m
 
 各 Pod は OpenShift 環境内で一意の IP アドレスを取得するため、IP アドレスは異なる可能性があります。エンドポイントリストを使用すると、サービスの背後にある Pod の数を素早く確認できます。
 
-また、*Developer Perspective* では、両方の *Pod* が実行中であることを確認できます。
+また、*Developer パースペクティブ* では、両方の *Pod* が実行中であることを確認できます。
 
 [.bordershadow]
 image::parksmap-scaled.png[link="self",window=_blank]
 
-全体的に見て、アプリケーションのスケーリングは極めてシンプルです。OpenShiftは既存のイメージの新しいインスタンスを起動するため、特に、新しいPodが https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/[スケジュールされた, window="_blank"]ノードにそのイメージが既にキャッシュされている場合、アプリケーションのスケーリングは非常に迅速に行われます。
+全体的に見て、アプリケーションのスケーリングは極めてシンプルです。OpenShiftは既存のイメージの新しいインスタンスを起動するため、特に、新しいPodが https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/[スケジュールされた,window="_blank"]ノードにそのイメージが既にキャッシュされている場合、アプリケーションのスケーリングは非常に迅速に行われます。
 
 
 [#application_self_healing]
@@ -165,7 +165,7 @@ image::parksmap-scaled.png[link="self",window=_blank]
 
 OpenShift の *RS* は、必要な数の *Pod* が稼働しているかどうかを常に監視しているため、必要なレプリカ数が現在の数と一致しない場合、OpenShift が状況を「修正」すると期待されるかもしれません。
 
-現在 2 つの *Pod* が稼働しているので、1 つを「誤って」強制終了した場合に何が起こるかを確認できます。`oc get pods` コマンドを再度実行し、*Pod* 名を選択します。次に、以下の操作を行います。
+現在 2 つの *Pod* が稼働しているので、1 つを「誤って」強制終了した場合に何が起こるかを確認できます。`oc get pods` コマンドを再度実行し、*Pod* 名を選択します。次に、以下の操作を行います。Pod名は `oc get pods`で得られた値を指定してください。
 
 [source,role="copypaste"]
 ----
@@ -188,7 +188,7 @@ parksmap-65c4f8b676-fxcrq   1/1     Running             0          4m48s
 これらのヘルスチェックに基づいて、OpenShift は `parksmap` アプリケーションインスタンスが正常でないと判断した場合、そのインスタンスを削除し、代わりに新しいインスタンスを作成します。これにより、必要な数のレプリカが常に確保されます。
 
 アプリケーションのプローブに関する詳細は、ドキュメントの
-link:{ocp4_starter_openshift_docs}/html/building_applications/application-health[Application Health,window='_blank']
+link:{ocp4_starter_openshift_docs}/html/building_applications/application-health[アプリケーションヘルス,window='_blank']
 セクション、およびこのガイドの後半で説明されています。
 
 [#scale_down]
