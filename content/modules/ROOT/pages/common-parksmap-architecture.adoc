@@ -18,6 +18,6 @@ image::roadshow-app-architecture.png[align="center",link="self",window=_blank]
 * 世界中の国立公園
 * 北米のメジャーリーグのスタジアム
 
-このアプリケーションのオリジナルのソースコードは、link:{ocp4_starter_roadshow_url}[here,window=_blank] にあります。
+このアプリケーションのオリジナルのソースコードは link:{ocp4_starter_roadshow_url}[ここ,window=_blank] にあります。
 
 ParksMap Web アプリケーションのサーバーサイドコンポーネントは、利用可能なすべてのバックエンドへの通信ゲートウェイとして機能します。これらのバックエンドは、OpenShift が提供するサービスディスカバリ（Service Discovery）メカニズムを使用して動的に検出されます。これについては、以降のセクションで詳しく説明します。
