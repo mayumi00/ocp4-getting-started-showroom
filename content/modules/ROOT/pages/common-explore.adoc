@@ -1,21 +1,21 @@
 = Explore OpenShift
-:navtitle: OpenShift を探索
+:navtitle: Explore OpenShift
 
 include::vars.adoc[]
 
 OpenShift は、プラットフォームを操作するための 2 つの主要なインターフェースを提供しています。視覚的な管理のための Web ベースのコンソールと、スクリプトや高度な操作のためのコマンドラインインターフェースです。このセクションでは、両方のツールに効果的にアクセスして使用する方法を学習します。
 
 [#the_web_console]
-== Web コンソール
+== Webコンソール
 
-OpenShift コンソールは、プロジェクト、アプリケーション、クラスターリソースを管理するための直感的なグラフィカルインターフェースを提供します。最新の Web ブラウザーからアクセスでき、一般的な管理タスクと開発タスクを簡素化するように設計されています。
+OpenShift Webコンソールは、プロジェクト、アプリケーション、クラスターリソースを管理するための直感的なグラフィカルインターフェースを提供します。最新の Web ブラウザーからアクセスでき、一般的な管理タスクと開発タスクを簡素化するように設計されています。
 
-=== OpenShift Web コンソールへのアクセス
+=== OpenShift Webコンソールへのアクセス
 
 [.bordershadow]
 image::openshift-console-login.png[width=500,link="self",window=_blank]
 
-OpenShift コンソールにアクセスするには、ブラウザで以下の URL にアクセスし、指定された認証情報を使用してログインしてください。
+OpenShift Webコンソールにアクセスするには、ブラウザで以下の URL にアクセスし、指定された認証情報を使用してログインしてください。
 
 *コンソール URL:* link:{ocp4_starter_console_url}[{ocp4_starter_console_url},window='_blank']
 
@@ -63,12 +63,12 @@ Kubernetes Version: v1.32.6
 
 このコマンドは、ユーザー名とパスワードを使用してクラスターへの認証を行います。
 
-NOTE: 「証明書は不明な認証局によって署名されています」というメッセージが表示された場合、このワークショップ環境では無視してかまいません。
+NOTE: 「The server uses a certificate signed by an unknown authority.」というメッセージが表示された場合、このワークショップ環境では無視してかまいません。*y* を入力して進みます。
 これは、クラスターの API 証明書が自己署名されていることを示しています。これは開発環境やテスト環境では一般的です。
 
 [.bordershadow]
 
-TIP: 認証にはトークンを使用することもできます。トークンを取得するには、OpenShift Web コンソールで **Copy login command** オプションを使用します (図を参照)。
+TIP: 認証にはトークンを使用することもできます。トークンを取得するには、OpenShift Webコンソールで **Copy login command** (ログインコマンドのコピー)オプションを使用します (図を参照)。
 
 [.bordershadow]
 image::openshift-console-login-command.png[link="self",window=_blank]
@@ -107,4 +107,4 @@ You have one project on this server: "Workspace ({ocp4_starter_project})".
 Using project "{ocp4_starter_project}" on server "{ocp4_starter_api_url}".
 ----
 
-完了です！これで、Webコンソールとコマンドラインインターフェースの両方からOpenShiftにアクセスできるようになりました。以降のセクションでは、これらのツールを使用して、プラットフォーム上でアプリケーションをデプロイおよび管理する方法を説明します。
+完了です！これで、Webコンソールとコマンドラインインターフェースの両方から OpenShift にアクセスできるようになりました。以降のセクションでは、これらのツールを使用して、プラットフォーム上でアプリケーションをデプロイおよび管理する方法を説明します。
